@@ -1,0 +1,26 @@
+[project]
+name = "ollama-ai-agents"
+version = "0.1.0"
+description = "CrewAI agents with Ollama integration - FastAPI Backend"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "crewai",
+    "langchain",
+    "langchain-community",
+    "langchain-ollama",
+    "langchain-openai",
+    "duckduckgo-search",
+    "requests",
+    "pydantic",
+    "fastapi",
+    "uvicorn",
+    "python-multipart"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "httpx"
+]
