@@ -44,17 +44,9 @@ def create_deepseek_llm() -> Optional[LLM]:
     """Create LLM instance with DeepSeek model"""
     return create_llm("deepseek-r1:1.5b")
 
-def create_llama_llm() -> Optional[LLM]:
-    """Create LLM instance with Llama model"""
-    return create_llm("llama3.2:3b")
-
-def create_mistral_llm() -> Optional[LLM]:
-    """Create LLM instance with Mistral model"""
-    return create_llm("mistral:7b")
-
-def create_codellama_llm() -> Optional[LLM]:
-    """Create LLM instance with CodeLlama model"""
-    return create_llm("codellama:7b")
+def create_qwen_llm() -> Optional[LLM]:
+    """Create LLM instance with Qwen model"""
+    return create_llm("qwen3:0.6b") 
 
 # Default global instance (for backward compatibility)
 ollama_llm = OllamaLLM() 

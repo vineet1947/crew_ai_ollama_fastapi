@@ -1,8 +1,9 @@
 from crewai import Agent
-from models.ollama_llm import create_deepseek_llm
+from models.ollama_llm import create_deepseek_llm , create_qwen_llm
 
 # Get the LLM instance with specific model
-llm = create_deepseek_llm()
+qwen_llm = create_qwen_llm()
+deepseek_llm = create_deepseek_llm()
 
 # Define agents directly with the LLM instance
 researcher_agent = Agent(
@@ -15,7 +16,7 @@ researcher_agent = Agent(
     and bullet points for easy reading.""",
     verbose=True,
     allow_delegation=False,
-    llm=llm
+    llm=qwen_llm
 )
 
 writer_agent = Agent(
@@ -27,7 +28,7 @@ writer_agent = Agent(
     with good structure and easy-to-read paragraphs.""",
     verbose=True,
     allow_delegation=False,
-    llm=llm
+    llm=qwen_llm
 )
 
 editor_agent = Agent(
@@ -39,5 +40,5 @@ editor_agent = Agent(
     while improving the overall quality of the content.""",
     verbose=True,
     allow_delegation=False,
-    llm=llm
+    llm=qwen_llm
 ) 

@@ -35,9 +35,6 @@ async def get_available_models():
         "ollama_available": crew_service.is_ollama_available(),
         "supported_models": [
             "deepseek-r1:1.5b",
-            "llama3.2:1b",
-            "llama3.2:3b",
-            "llama3.2:7b",
-            "llama3.2:70b"
+            "qwen3:0.6b"
         ]
     } 
