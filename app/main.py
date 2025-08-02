@@ -1,8 +1,21 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.routes import router
+from contextlib import asynccontextmanager
+from api.routes import api_router 
 import uvicorn
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Lifespan event handler"""
+    # Startup
+    print("�� Starting Ollama AI Agents API...")
+    print("📚 API Documentation available at: http://localhost:8000/docs")
+    
+    yield
+    
+    # Shutdown
+    print("🛑 Shutting down Ollama AI Agents API...") 
+    
 # Create FastAPI app
 app = FastAPI(
     title="Ollama AI Agents API",
@@ -22,18 +35,7 @@ app.add_middleware(
 )
 
 # Include API routes
-app.include_router(router, prefix="/api/v1")
-
-@app.on_event("startup")
-async def startup_event():
-    """Startup event to initialize services"""
-    print("🚀 Starting Ollama AI Agents API...")
-    print("📚 API Documentation available at: http://localhost:8000/docs")
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    """Shutdown event to cleanup resources"""
-    print("🛑 Shutting down Ollama AI Agents API...")
+app.include_router(api_router, prefix="/api/v1")
 
 if __name__ == "__main__":
     uvicorn.run(
